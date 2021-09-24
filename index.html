@@ -68,18 +68,16 @@ location.reload();
 },1000);
 
 resultDiv.innerHTML = synth.text = "ではリセットします";
-
-
+speechSynthesis.speak(synth);
 
 }
 
-if (interimTranscript == "Facebook BGM　セット") {
+if (interimTranscript == "Facebook BGM　　セット") {
   document.getElementById("audioElement3").play();
   resultDiv.innerHTML= synth.text
   = "かしこまりました。では曲を勝手に自動再生します";
 
-
-
+speechSynthesis.speak(synth);
 
 
 }
@@ -91,9 +89,8 @@ let  u77   =  interimTranscript ;
 var x;
 x=Math.floor(Math.random()*8);
  resultDiv.innerHTML = synth.text = a[x];
-
 speechSynthesis.speak(synth);
-}
+  }
 
 
 setTimeout(function(){
