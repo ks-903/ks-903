@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,17 +6,21 @@
 <title>Web voice</title>
 </head>
 <body bgcolor="skyblue" text="blue" >
+  <audio id="audioElement3" loop src="mark2.mp3"></audio>
 <div>
 <p class="tile": center;>voice test</p>
-
+<form id="form1" action="#">
+   <input type="text" id="input-message">
+   <input type="button" onclick="showMessage()" value="送信">
+ </form>
 
 
 <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
 <button id="stop-btn">stop</button>
 <div id="result-div"></div>
-  
-  
+
 <script>
+  const textbox2 = document.getElementById("input-message");
   const startBtn = document.querySelector('#start-btn');
   const stopBtn = document.querySelector('#stop-btn');
   const resultDiv = document.querySelector('#result-div');
@@ -27,6 +32,9 @@ let synth = new SpeechSynthesisUtterance();
    synth.volumeSetting = 0.5; // 音量 0(min) - 1(max), default 1.0
 synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
    // 設定項目終わり
+ // 話す速さ 0.1(min) - 10(max), default 1.0
+      // 設定項目終わり
+
 
 
 
@@ -48,10 +56,8 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
       }
     }
     resultDiv.innerHTML = // 確定した(黒の)認識結果
+     finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>' ;
 
-
-        finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>'  ;
-synth.text  =finalTranscript;
 
 
 
@@ -61,22 +67,69 @@ if (interimTranscript=="クリア") {
 location.reload();
 },1000);
 
-  resultDiv.innerHTML = synth.text = "ではリセットします";
+resultDiv.innerHTML = synth.text = "ではリセットします";
+
+
+
+}
+
+if (interimTranscript == "facebook") {
+  document.getElementById("audioElement3").play();
+  resultDiv.innerHTML= synth.text
+  = "かしこまりました。では曲を勝手に自動再生します";
+
+
+
+
+
+}
+let  u77   =  interimTranscript ;
+  if ((u77 == "今日は")||(u77 =='こんばんは')||(u77 =='おはよん')||(u77 =='おはようございます')||(u77 =='おはよう')||(u77 =='お疲れ')) {
+
+
+    var a =['こんにちはユーザー様'||'私は音声アシストks-903ですこんにちは'||'なんのご用件でしょうか?'||'こんばんわ,良い天気ですね'||'おはよう'||'こんにちは私はks-903です'||'お疲れ様です'||'グッとバイ'];
+var x;
+x=Math.floor(Math.random()*8);
+ resultDiv.innerHTML = synth.text = a[x];
 
 speechSynthesis.speak(synth);
-
 }
-let u77 = interimTranscript ;
-  if ((u77 == "今日は KS")||(u77 =='こんばんは KS')||(u77 =='おはよん KS')||(u77 =='おはようございます KS')||(u77 =='おはよう KS')||(u77 =='お疲れ KS')) {
 
-    var a=["01こんにちはユーザー様","02私は音声アシストks-903ですこんにちは","03なんで小ご用件は?","04やはり","きっぱりと諦めることも大事です","05時間とともに忘れます","06私にはアドバイスはできません","07神のみが知るです","08できるといいですね"];
-    var x;
-    x=Math.floor(Math.random()*8);
 
-  resultDiv.innerHTML=  synth.text= a[x];
-  speechSynthesis.speak(synth);
+setTimeout(function(){
+ finalTranscript;
+
+},3000);
 }
-}
+
+const showMessage = () => {
+      const textbox = document.getElementById("input-message");
+      const inputValue = textbox.value;
+synth.text = finalTranscript  = inputValue;
+      //テキストボックスの値を使って、出力するメッセージを生成する
+      const output =    "入力された内容は「" + inputValue + "」です。";
+      //出力用のp要素にメッセージを表示
+      resultDiv.innerHTML = output;
+      initSynth.lang = "ja-JP";
+      initSynth.rate   = 0.9;       // 速さ
+      initSynth.pitch  = 0.5;       // 高さ
+      initSynth.volume = 0.6;       // 音量
+     speechSynthesis.speak(synth);
+
+
+    }
+    textbox2.onclick = () => {
+
+    initSynth  = new SpeechSynthesisUtterance("この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。");
+resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。";
+     initSynth.lang = "ja-JP";
+     initSynth.rate   = 0.9;       // 速さ
+     initSynth.pitch  = 0.5;       // 高さ
+     initSynth.volume = 0.6;       // 音量
+    speechSynthesis.speak(initSynth);
+
+
+  }
   startBtn.onclick = () => {
 
 
@@ -93,6 +146,7 @@ recognition.start();
   }
   stopBtn.onclick = () => {
     recognition.stop();
+    synth.text  = finalTranscript;
     speechSynthesis.speak(synth);
 
 
@@ -103,6 +157,5 @@ recognition.start();
 </script>
 
 
-</script>
 </body>
 </html>
