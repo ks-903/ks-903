@@ -7,12 +7,18 @@
 </head>
 <body bgcolor="skyblue" text="blue" >
   <audio id="audioElement3" loop src="mark3.mp3"></audio>
-<div>
+  <style>
+  button {
+  margin: 10px 0;
+}
+  </style>
+  <div>
 <p class="tile": center;>voice test</p>
 <form id="form1" action="#">
    <input type="text" id="input-message">
-   <input type="button" onclick="showMessage()" value="送信">
- </form>
+   <input type="reset" onclick="showMessage()" value="送信">
+ <!-- type="button" -->
+    </form>
 
 
 <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
