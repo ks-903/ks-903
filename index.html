@@ -8,9 +8,7 @@
 <body bgcolor="skyblue" text="blue" >
   <audio id="audioElement3" loop src="mark3.mp3"></audio>
 
- <video id="video">
-    <source src="ddd.mp4">
-    </video>
+
   <style>
   button {
   margin: 10px 0;
@@ -18,7 +16,7 @@
   </style>
 
 
- 
+
 <p class="tile": center;>voice test</p>
 <form id="form1" action="#">
    <input type="text" id="input-message">
@@ -30,6 +28,7 @@
     <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
 <button id="stop-btn">stop</button>
 <div id="result-div"></div>
+<h1 id="content"></h1>
 
 <script>
   const textbox2 = document.getElementById("input-message");
@@ -54,6 +53,9 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
   recognition.interimResults = true;
   recognition.continuous = true;
 
+    // omit
+
+
   let finalTranscript = ''
   recognition.onresult = (event) => {
     let interimTranscript = ''; // 暫定(灰色)の認識結果
@@ -61,7 +63,8 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
       let transcript = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
         finalTranscript += transcript ;
-
+console.log( event.results[i][0].transcript);
+console.log( speechSynthesis.speak(synth));
 
       } else {
         interimTranscript = transcript;
@@ -93,39 +96,64 @@ speechSynthesis.speak(synth);
 
 
 }
-    
- if (interimTranscript == "使い方") {
 
-  
-  var videoElem = document.getElementById('video');
- 
-videoElem.autoplay = true;
-    resultDiv.innerHTML = synth.text
-  = "かしこまりました。ではビデオで説明します。";
 
-speechSynthesis.speak(synth);  
-    
 
-}
-  
-     
+  var text = interimTranscript;
+
+  switch(text) {
+case "使い方":
+      getVideo0();
+      break;
+      default:
+
+     }
+
+
+
+      //ビデオ
+      function getVideo0() {
+          var mp4 = '<video src="ddd.mp4" loop autoplay ></video>';
+
+          content.innerHTML = mp4;
+
+setTimeout(function(){
+          resultDiv.innerHTML = synth.text  = "以上ですで、ビデオを終了します。";
+          speechSynthesis.speak(synth);
+        },333000);
+
+        setTimeout(function(){
+        location.reload();
+
+  },3370000);
+
+
+
+        }
+
+      //テキスト表示
+
+
     let  u77   =  interimTranscript ;
   if ((u77 == "今日は")||(u77 =='こんばんは')||(u77 =='おはよん')||(u77 =='おはようございます')||(u77 =='おはよう')||(u77 =='お疲れ')) {
 
 
-    var a =['こんにちはユーザー様'||'私は音声アシストks-903ですこんにちは'||'なんのご用件でしょうか?'||'こんばんわ,良い天気ですね'||'おはよう'||'こんにちは私はks-903です'||'お疲れ様です'||'グッとバイ'];
+    var a =['こんにちはユーザー様","私は音声アシストks-903ですこんにちは""なんのご用件でしょうか?'||'こんばんわ,良い天気ですね'||'おはよう'||'こんにちは私はks-903です'||'お疲れ様です'||'グッとバイ'];
 var x;
 x=Math.floor(Math.random()*8);
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
-  }
 
+        setTimeout(function(){
+        finalTranscript
 
-setTimeout(function(){
- finalTranscript;
+  },30000);
 
-},3000);
 }
+
+
+
+
 
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
@@ -141,6 +169,8 @@ synth.text = finalTranscript  = inputValue;
       initSynth.volume = 0.6;       // 音量
      speechSynthesis.speak(synth);
 
+
+    }
 
     }
     textbox2.onclick = () => {
