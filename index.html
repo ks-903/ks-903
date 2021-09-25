@@ -13,7 +13,7 @@
 }
   </style>
 <video id="video">
-  <source src="./hoge.mp4" type="video/mp4">
+  <source src="ddd.mp4" type="video/mp4">
  
 </video>
 <p id="state"></p>
@@ -107,7 +107,7 @@ var  text = interimTranscript ;
     resultDiv.innerHTML = synth.text
   = "かしこまりました。ではビデオで説明します。";
 
-})speechSynthesis.speak(synth);  
+speechSynthesis.speak(synth);  
     
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -127,7 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
   })
   //再生中
   v.addEventListener('playing', function() {
-    state.textContent = '再生中です';  }
+    state.textContent = '再生中です';
+  })
+}
   
      
     let  u77   =  interimTranscript ;
