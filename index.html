@@ -10,7 +10,25 @@
   <style>
   button {
   margin: 10px 0;
+}.box {
+    position: relative;
 }
+#mv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#mv video {
+    width: 100%;
+    height: 100%;
+}
+.front {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 360/640*100 */
+}    
   </style>
   <div>
 <p class="tile": center;>voice test</p>
@@ -20,8 +38,11 @@
  <!-- type="button" -->
     </form>
 
-
-<h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
+<div class="box">
+  <div id="mv"></div>
+  <div class="front"></div>
+</div>
+    <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
 <button id="stop-btn">stop</button>
 <div id="result-div"></div>
 
@@ -102,8 +123,13 @@ var  text = interimTranscript ;
   
   function getVideo() {
 
-    var mp4 = '<video autoplay loop src="ddd.mp4"></video>';
-    resultDiv.innerHTML = mp4=  synth.text
+    var video = document.createElement('video');
+video.autoplay = true;
+video.loop = true;
+video.playsinline = true;
+video.src = 'ddd.mp4';
+document.getElementById('mv').appendChild(video);
+    resultDiv.innerHTML = synth.text
   = "かしこまりました。ではビデオで説明します。";
 
 speechSynthesis.speak(synth);    
