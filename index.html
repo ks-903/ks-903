@@ -87,7 +87,33 @@ speechSynthesis.speak(synth);
 
 
 }
-let  u77   =  interimTranscript ;
+    
+
+var c = interimTranscript ;
+    switch(c){
+ 
+  
+   case "使い方":
+    t990();
+    break;
+    default:
+      getTextContents(c);
+
+
+  }
+  function t990() {
+
+    var mp4 = '<video autoplay loop src="ddd.mp4"></video>';
+    resultDiv.innerHTML = mp4 ;
+    resultDiv.innerHTML= synth.text
+  = "かしこまりました。ではビデオで説明します。";
+
+speechSynthesis.speak(synth);    
+}
+resultDiv.innerHTML = '<input type="text" value="' + c + '>';
+}
+     
+    let  u77   =  interimTranscript ;
   if ((u77 == "今日は")||(u77 =='こんばんは')||(u77 =='おはよん')||(u77 =='おはようございます')||(u77 =='おはよう')||(u77 =='お疲れ')) {
 
 
