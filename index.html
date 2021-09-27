@@ -127,11 +127,7 @@ setTimeout(function(){
   },3370000);
 resultDiv.innerHTML = synth.text  = "かしこまりました。ではビデオで使い方を説明しますこちらです";
 recognition.stop(); 
-setTimeout(function(){
-recognition.start();
-},3600);
 
-        }
 
       //テキスト表示
 
@@ -148,13 +144,17 @@ x=Math.floor(Math.random()*8);
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
     
-  }
-  }{
-    setTimeout(function(){
-u79;
-},3600);   
+  }  
+        synth.addEventListener("end", () => {
+        // 聞き取りを再開する
 
+        recog.start();
+
+    });        
   }
+ 
+
+  
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
       const inputValue = textbox.value;
