@@ -136,7 +136,7 @@ recognition.start();
       //テキスト表示
 
 
-    let  u77   =  interimTranscript ;
+    var  u77   =  interimTranscript ;
   if ((u77 == "今日は")||(u77 =="こんばんは")||(u77 =="おはよん")||(u77 =="おはようございます")||(u77 =="おはよう")||(u77 =="お疲れ")) {
 
 
@@ -202,16 +202,7 @@ recognition.start();
     synth.text  = finalTranscript;
     speechSynthesis.speak(synth);
 
-
-
-
-  }
-
-  if (window.matchMedia('(max-width: 767px)').matches) {
-    //スマホ処理
-} else if (window.matchMedia('(min-width:768px)').matches) {
-    //PC処理
-}
+ 
       </script>
 
 
