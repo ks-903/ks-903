@@ -147,10 +147,11 @@ x=Math.floor(Math.random()*8);
      
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
-    
-
+    setTimeout(function(){
+recognition.start();
+},3600);
   }
-    recognition.start();
+   
 
   }
   
