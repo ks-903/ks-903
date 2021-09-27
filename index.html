@@ -73,7 +73,7 @@ console.log( speechSynthesis.speak(synth));
 
 
 
-if (interimTranscript == "クリア")||(interimTranscript=="クリア。 ") {
+if ((interimTranscript == "クリア")||(interimTranscript=="クリア。 ")) {
 
   setTimeout(function(){
 location.reload();
@@ -84,7 +84,7 @@ speechSynthesis.speak(synth);
 
 }
 
-if (interimTranscript == "BGM セット")||(interimTranscript=="BGM セット。") {
+if ((interimTranscript == "BGM セット")||(interimTranscript=="BGM セット。")) {
   document.getElementById("audioElement3").play();
   resultDiv.innerHTML= synth.text
   = "かしこまりました。では曲を勝手に自動再生します";
@@ -94,7 +94,7 @@ speechSynthesis.speak(synth);
 
 }
 
-if (interimTranscript == "検索")||(interimTranscript=="検索。") {
+if ((interimTranscript == "検索")||(interimTranscript=="検索。")) {
   recognition.stop();
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
@@ -108,7 +108,7 @@ content.innerHTML = mp4;
 
 }
 
-if (interimTranscript == "動画検索")||(interimTranscript=="動画検索。") {
+if ((interimTranscript == "動画検索")||(interimTranscript=="動画検索。")) {
   recognition.stop();
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
@@ -121,7 +121,7 @@ var mp4 = '<iframe src="jj.html" scrolling = "no"  frameborder="0" width="481" h
 content.innerHTML = mp4;
 
 }
-if (interimTranscript == "画像検索")||(interimTranscript=="画像検索。") {
+if ((interimTranscript == "画像検索")||(interimTranscript=="画像検索。")) {
   recognition.stop();
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
@@ -136,7 +136,7 @@ content.innerHTML = mp4;
 }
 
 
-if (interimTranscript == "使い方")||(interimTranscript=="使い方。") {
+if ((interimTranscript == "使い方")||(interimTranscript=="使い方。")){
           var mp4 = '<video src="ddd.mp4" loop autoplay ></video>';
 
           content.innerHTML = mp4;
