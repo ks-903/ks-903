@@ -143,7 +143,7 @@ x=Math.floor(Math.random()*8);
 speechSynthesis.speak(synth);
     
   }  
-      }
+      
 synth.onresult = (event) => {// 聞き取りを再開する
 
         recog.start();
@@ -151,7 +151,7 @@ synth.onresult = (event) => {// 聞き取りを再開する
           
   }
  
-
+      }
   
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
