@@ -148,12 +148,13 @@ x=Math.floor(Math.random()*8);
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
     
-  }else{setTimeout(function(){
+  }else{
+    setTimeout(function(){
 recognition.start();
 },3600);   
 
   }
-  
+  }
 
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
