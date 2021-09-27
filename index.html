@@ -117,7 +117,7 @@ case "使い方":
           content.innerHTML = mp4;
 
 setTimeout(function(){
-          resultDiv.innerHTML = synth.text  = "以上ですで、ビデオを終了します。";
+          resultDiv.innerHTML = synth.text  = "以上です、ビデオを終了します。まりました。ではビデオで使い方を説明しますこちらです";
           speechSynthesis.speak(synth);
         },333000);
 
@@ -125,8 +125,11 @@ setTimeout(function(){
         location.reload();
 
   },3370000);
-
-
+resultDiv.innerHTML = synth.text  = "かしこまりました。ではビデオで使い方を説明しますこちらです";
+recognition.stop(); 
+setTimeout(function(){
+recognition.start();
+},3600);
 
         }
 
@@ -142,10 +145,10 @@ var x;
 x=Math.floor(Math.random()*8);
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
-
-         setTimeout(function(){
+recognition.stop();
+    setTimeout(function(){
 recognition.start();
-},5600);
+},3600);
 }
 
 setInterval(function(){
