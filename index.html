@@ -143,11 +143,10 @@ recognition.start();
     var a =["こんにちはユーザー様","私は音声アシストks-903ですこんにちは","なんのご用件でしょうか?","こんばんわ,良い天気ですね","おはよう","こんにちは私はks-903です","お疲れ様です","グッとバイ"];
 var x;
 x=Math.floor(Math.random()*8);
-    recognition.stop();    
+     
  resultDiv.innerHTML = synth.text = a[x];
 speechSynthesis.speak(synth);
-
- 
+recognition.stop();   
 }
 
 
