@@ -166,6 +166,12 @@ synth.text = finalTranscript  = inputValue;
     
 
     }
+var h = function(){
+  recognition.start();
+    }
+
+setInterval(h, 10000);
+    
     textbox2.onclick = () => {
 
     initSynth  = new SpeechSynthesisUtterance("この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。");
@@ -192,11 +198,6 @@ resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるよ
 
 },5600);
   }
-    var h = function(){
-  recognition.start();
-    }
-
-setInterval(h, 10000);
     
 
   
