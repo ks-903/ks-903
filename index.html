@@ -188,11 +188,18 @@ resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるよ
    initSynth.volume = 0.6;       // 音量
   speechSynthesis.speak(initSynth);
   setTimeout(function(){
-    var  u79   = recognition.start();    
+    recognition.start();    
 
 },5600);
-
   }
+    var h = function(){
+  recognition.start();
+    };
+
+setInterval(log, 10000);
+    
+
+  
   stopBtn.onclick = () => {
     recognition.stop();
     synth.text  = finalTranscript;
