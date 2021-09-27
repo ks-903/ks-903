@@ -146,7 +146,16 @@ speechSynthesis.speak(synth);
       
 
  
-      }
+      }    }
+var h = function(){
+  recognition.start();
+    }
+
+setInterval(h, 10000);   
+  
+  
+  
+  
   
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
@@ -165,12 +174,7 @@ synth.text = finalTranscript  = inputValue;
 
     
 
-    }
-var h = function(){
-  recognition.start();
-    }
 
-setInterval(h, 10000);
     
     textbox2.onclick = () => {
 
