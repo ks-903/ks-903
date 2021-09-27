@@ -53,8 +53,8 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
   recognition.continuous = true;
 
    
-
-
+const defaultInput = "";
+    let input = defaultInput;
   let finalTranscript = ''
   recognition.onresult = (event) => {
     let interimTranscript = ''; // 暫定(灰色)の認識結果
