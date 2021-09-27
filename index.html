@@ -14,7 +14,7 @@
   margin: 10px 0;
 }
   </style>
-  
+
 
 
 <p class="tile": center;>voice test</p>
@@ -27,7 +27,7 @@
     <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
 <button id="stop-btn">stop</button>
 <div id="result-div"></div>
-<h1 id="content"></h1>
+<h1 style="text-align:center" id="content"></h1>
 
 <script>
   const textbox2 = document.getElementById("input-message");
@@ -52,7 +52,7 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
   recognition.interimResults = true;
   recognition.continuous = true;
 
-   
+
   let finalTranscript = ''
   recognition.onresult = (event) => {
     let interimTranscript = ''; // 暫定(灰色)の認識結果
@@ -73,7 +73,7 @@ console.log( speechSynthesis.speak(synth));
 
 
 
-if (interimTranscript=="クリア") {
+if (interimTranscript == "クリア")||(interimTranscript=="クリア。 ") {
 
   setTimeout(function(){
 location.reload();
@@ -84,7 +84,7 @@ speechSynthesis.speak(synth);
 
 }
 
-if (interimTranscript == "BGM セット") {
+if (interimTranscript == "BGM セット")||(interimTranscript=="BGM セット。") {
   document.getElementById("audioElement3").play();
   resultDiv.innerHTML= synth.text
   = "かしこまりました。では曲を勝手に自動再生します";
@@ -94,22 +94,49 @@ speechSynthesis.speak(synth);
 
 }
 
+if (interimTranscript == "検索")||(interimTranscript=="検索。") {
+  recognition.stop();
+  synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
 
-  var text = interimTranscript;
-
-  switch(text) {
-case "使い方":
-      getVideo0();
-      break;
-      default:
-
-     }
+speechSynthesis.speak(synth);
 
 
+var mp4 = '<iframe src="jjj.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
 
-      //ビデオ
-      function getVideo0() {
+content.innerHTML = mp4;
+
+}
+
+if (interimTranscript == "動画検索")||(interimTranscript=="動画検索。") {
+  recognition.stop();
+  synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
+
+
+speechSynthesis.speak(synth);
+
+
+var mp4 = '<iframe src="jj.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
+
+content.innerHTML = mp4;
+
+}
+if (interimTranscript == "画像検索")||(interimTranscript=="画像検索。") {
+  recognition.stop();
+  synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
+
+
+speechSynthesis.speak(synth);
+
+
+var mp4 = '<iframe src="j.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
+
+content.innerHTML = mp4;
+
+}
+
+
+if (interimTranscript == "使い方")||(interimTranscript=="使い方。") {
           var mp4 = '<video src="ddd.mp4" loop autoplay ></video>';
 
           content.innerHTML = mp4;
@@ -124,40 +151,38 @@ setTimeout(function(){
 
   },3370000);
 resultDiv.innerHTML = synth.text  = "かしこまりました。ではビデオで使い方を説明しますこちらです";
-recognition.stop(); 
+recognition.stop();
 
 
       //テキスト表示
       }
 
-    var  u77   =  interimTranscript ;
-  if ((u77 == "今日は")||(u77 =="こんばんは")||(u77 =="おはよん")||(u77 =="おはようございます")||(u77 =="おはよう")||(u77 =="お疲れ")) {
-    
 
-recognition.stop();   
+
+  if ((interimTranscript == "今日は")||(interimTranscript=="今日は。")||(interimTranscript=="こんばんは。")(interimTranscript =="こんばんは")||(interimTranscript =="おはよん")||(interimTranscript=="おはよん。")||(interimTranscript =="おはようございます")||(interimTranscript =="おはようございます。")||(interimTranscript =="お疲れ")||(interimTranscript=="お疲れ。")) {
+
+
+  recognition.stop();
+  var x;
     var a =["こんにちはユーザー様","私は音声アシストks-903ですこんにちは","なんのご用件でしょうか?","こんばんわ,良い天気ですね","おはよう","こんにちは私はks-903です","お疲れ様です","グッとバイ"];
-var x;
+
 x=Math.floor(Math.random()*8);
-     
+
      resultDiv.innerHTML = synth.text = a[x] ;
 speechSynthesis.speak(synth);
-     var g = function(){ 
-       recognition.start();
-    
 
-setTimeoutg( g, 10000);   
-       
-      
+
+
+
+
+
+
+  }
   }
 
- 
-  
-  }
-  }
-      
-  
-  
-  
+
+
+
 const showMessage = () => {
       const textbox = document.getElementById("input-message");
       const inputValue = textbox.value;
@@ -176,7 +201,7 @@ synth.text = finalTranscript  = inputValue;
 }
 
 
-    
+
     textbox2.onclick = () => {
 
     initSynth  = new SpeechSynthesisUtterance("この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。");
@@ -199,13 +224,13 @@ resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるよ
    initSynth.volume = 0.6;       // 音量
   speechSynthesis.speak(initSynth);
   setTimeout(function(){
-    recognition.start();    
+    recognition.start();
 
 },5600);
   }
-    
 
-  
+
+
   stopBtn.onclick = () => {
     recognition.stop();
     synth.text  = finalTranscript;
