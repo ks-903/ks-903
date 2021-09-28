@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Web voice</title>
+</head>
+<body bgcolor="skyblue" text="blue" >
+  <audio id="audioElement3" loop src="mark3.mp3"></audio>
+
+
+  <style>
+  button {
+  margin: 10px 0;
+}
+  </style>
+
+
+
+<p class="tile": center;>voice test</p>
+<form id="form1" action="#">
+   <input type="text" id="input-message">
+   <input type="reset"+"button" onclick="showMessage()"  value="送信">
+
+    </form>
+ <!-- type="button" -->
+    <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
+<button id="stop-btn">stop</button>
+<div id="result-div"></div>
+<h1 style="text-align:center" id="content"></h1>
+
+<script>
+  const textbox2 = document.getElementById("input-message");
+  const startBtn = document.querySelector('#start-btn');
+  const stopBtn = document.querySelector('#stop-btn');
+  const resultDiv = document.querySelector('#result-div');
+
+  SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+  let recognition = new SpeechRecognition();
+let synth = new SpeechSynthesisUtterance();
+   synth.pitchSetting = 0.6;  // ピッチ 0(min) - 2(max), default 1.0
+   synth.volumeSetting = 0.5; // 音量 0(min) - 1(max), default 1.0
+synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
+   // 設定項目終わり
+ // 話す速さ 0.1(min) - 10(max), default 1.0
+      // 設定項目終わり
+
+
+
+
+  recognition.lang = 'ja-JP';
+  recognition.interimResults = true;
+  recognition.continuous = true;
+
+
+  let finalTranscript = ''
+  recognition.onresult = (event) => {
+    let interimTranscript = ''; // 暫定(灰色)の認識結果
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      let transcript = event.results[i][0].transcript;
+      if (event.results[i].isFinal) {
+        finalTranscript += transcript ;
+console.log( event.results[i][0].transcript);
+
+
+      } else {
+        interimTranscript = transcript;
+      }
+    }
+    resultDiv.innerHTML = // 確定した(黒の)認識結果
+     finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>' ;
+
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+  startBtn.onclick = () => {
+
+
+    initSynth = new SpeechSynthesisUtterance("ksー９０３チャットボイス、が起動されました");
+   initSynth.lang = "ja-JP";
+   initSynth.rate   = 0.9;       // 速さ
+   initSynth.pitch  = 0.5;       // 高さ
+   initSynth.volume = 0.6;       // 音量
+  speechSynthesis.speak(initSynth);
+  setTimeout(function(){
+    recognition.start();
+
+},5600);
+  }
+
+
+
+  stopBtn.onclick = () => {
+    recognition.stop();
+    synth.text  = finalTranscript;
+    speechSynthesis.speak(synth);
+
+  }
+      </script>
+
+
+</body>
+</html>
