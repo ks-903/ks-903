@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,8 +5,7 @@
 <title>Web voice</title>
 </head>
 <body bgcolor="skyblue" text="blue" >
-  <audio id="audioElement3" loop src="mark3.mp3"></audio>
-
+  <audio id="audioElement2" loop src="mark3.mp3"></audio>
 
   <style>
   button {
@@ -19,14 +17,17 @@
 
 <p class="tile": center;>voice test</p>
 <form id="form1" action="#">
-   <input type="text" id="input-message">
+   <input type="text" id="input-message" id="btn" >
    <input type="reset"+"button" onclick="showMessage()"  value="送信">
 
-    </form>
+ </form>
+ <audio id="audioElement2" loop
+ ></audio>
  <!-- type="button" -->
     <h2 style="text-align: center; size="14px""><button id="start-btn">start</button>
-<button id="stop-btn">stop</button>
-<div id="result-div"></div>
+<button id="stop-btn"  >stop</button>
+<div id="result-div" ></div>
+
 <h1 style="text-align:center" id="content"></h1>
 
 <script>
@@ -34,6 +35,7 @@
   const startBtn = document.querySelector('#start-btn');
   const stopBtn = document.querySelector('#stop-btn');
   const resultDiv = document.querySelector('#result-div');
+
 
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
   let recognition = new SpeechRecognition();
@@ -58,44 +60,112 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
     let interimTranscript = ''; // 暫定(灰色)の認識結果
     for (let i = event.resultIndex; i < event.results.length; i++) {
       let transcript = event.results[i][0].transcript;
+
       if (event.results[i].isFinal) {
-        finalTranscript += transcript ;
-console.log( event.results[i][0].transcript);
-console.log( speechSynthesis.speak(synth));
+
+      finalTranscript +=     transcript  ;
+
 
       } else {
-        interimTranscript = transcript;
+  interimTranscript   =  transcript  ;
       }
+      if (event.results[i].isFinal) {
+      var u = finalTranscript;
+      u  =  transcript;
+
+
+      }
+
     }
+
+
     resultDiv.innerHTML = // 確定した(黒の)認識結果
-     finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>' ;
+      finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>' ;
 
 
 
-
-if ((interimTranscript == "クリア")||(interimTranscript=="クリア。 ")) {
+if ((u == "クリア")||(u=="クリア。 ")) {
 
   setTimeout(function(){
 location.reload();
 },1000);
-
 resultDiv.innerHTML = synth.text = "ではリセットします";
 speechSynthesis.speak(synth);
 
 }
 
-if ((interimTranscript == "BGM セット")||(interimTranscript=="BGM セット。")) {
-  document.getElementById("audioElement3").play();
-  resultDiv.innerHTML= synth.text
-  = "かしこまりました。では曲を勝手に自動再生します";
+
+
+if ((u == "BGM セット")||(u == "BGM セット")||(u == " BGM セット")||(u == " BGM セット")){
+  document.getElementById("audioElement2").play();
+   resultDiv.innerHTML= synth.text
+  = "かしこまりました。では曲を勝手に自動再生します" ;
+
 
 speechSynthesis.speak(synth);
 
 
 }
+if ((u == "BGM ランダムセット")||(u == "BGM ランダムセット")||(u == " BGM ランダムセット")||(u == " BGM ランダムセット")){
 
-if ((interimTranscript == "検索")||(interimTranscript=="検索。")) {
-  recognition.stop();
+
+audioArr=['111.mp3','444.mp3','555.mp3','000.mp3','mikami77.mp3'];
+
+
+
+var i ;
+
+
+var audio = new Audio();
+ k = function() {
+num = Math.floor(Math.random() * audioArr.length);
+
+
+if (num == audioArr.length) {
+num = audioArr.length - 1;
+}
+audio.src = audioArr[num];
+audio.play();
+}
+
+
+k("kk") ;
+
+
+
+
+   resultDiv.innerHTML= synth.text =i
+  = "かしこまりました。では曲を勝手に自動再生します" ;
+
+
+speechSynthesis.speak(synth);
+
+
+
+
+
+
+}
+
+
+if ((u == "BGM チェンジ")||(u == "BGM チェンジ。")||(u == " BGM チェンジ")||(u == " BGM チェンジ。")){
+audioArr().pause();
+
+
+  resultDiv.innerHTML= synth.text
+ = "かしこまりました。では現在の曲を停止して別の曲に切り替えます。" ;
+
+
+ speechSynthesis.speak(synth);
+
+
+
+
+
+
+ }
+if ((u == "検索")||(u=="検索。")) {
+
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
 
@@ -108,8 +178,8 @@ content.innerHTML = mp4;
 
 }
 
-if ((interimTranscript == "動画検索")||(interimTranscript=="動画検索。")) {
-  recognition.stop();
+if ((u == "動画検索")||(u=="動画検索。")) {
+
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
 
@@ -121,8 +191,8 @@ var mp4 = '<iframe src="jj.html" scrolling = "no"  frameborder="0" width="481" h
 content.innerHTML = mp4;
 
 }
-if ((interimTranscript == "画像検索")||(interimTranscript=="画像検索。")) {
-  recognition.stop();
+if ((u == "画像検索")||(u=="画像検索。")) {
+
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
 
@@ -136,7 +206,7 @@ content.innerHTML = mp4;
 }
 
 
-if ((interimTranscript == "使い方")||(interimTranscript=="使い方。")){
+if ((u == "使い方")||(u=="使い方。")){
           var mp4 = '<video src="ddd.mp4" loop autoplay ></video>';
 
           content.innerHTML = mp4;
@@ -151,7 +221,6 @@ setTimeout(function(){
 
   },3370000);
 resultDiv.innerHTML = synth.text  = "かしこまりました。ではビデオで使い方を説明しますこちらです";
-recognition.stop();
 
 
       //テキスト表示
@@ -159,10 +228,10 @@ recognition.stop();
 
 
 
-  if ((interimTranscript == "今日は")||(interimTranscript=="今日は。")||(interimTranscript=="こんばんは。")||(interimTranscript =="こんばんは")||(interimTranscript =="おはよん")||(interimTranscript=="おはよん。")||(interimTranscript =="おはようございます")||(interimTranscript =="おはようございます。")||(interimTranscript =="お疲れ")||(interimTranscript=="お疲れ。")) {
+  if ((u== "こんにちは")||(u=="こんにちは。")||(u=="こんばんは。")||(u =="こんばんは")||(u=="おはよん")||(u=="おはよん。")||(u =="おはようございます")||(u=="おはようございます。")||(u =="お疲れ")||(u=="お疲れ。")) {
 
 
-  recognition.stop();
+
   var x;
     var a =["こんにちはユーザー様","私は音声アシストks-903ですこんにちは","なんのご用件でしょうか?","こんばんわ,良い天気ですね","おはよう","こんにちは私はks-903です","お疲れ様です","グッとバイ"];
 
@@ -175,9 +244,24 @@ speechSynthesis.speak(synth);
 
 
 
+  }
+  if ((u== "開発者")||(u=="開発者。")||(u=="製作者")||(u =="制作者。")||(u=="作った人")||(u=="作った人。")||(u =="創作者")||(u=="創作者。")||(u =="発明者")||(u=="発明者。")) {
+
+
+
+resultDiv.innerHTML = synth.text  = "かしこまりました。"+ u +" 音声コマンド、を訪ねてくださりありがとうございます。この"+ u +"は、google apiを基に ks 903事、久村システムに よって2017年に研究を開始し、発案されました。これからも様々な新機能を搭載して行きますので、お楽しみください。";
+speechSynthesis.speak(synth);
+
+
+
 
 
   }
+setInterval(function(){
+  recognition.start();
+
+},40000);
+
   }
 
 
@@ -204,17 +288,34 @@ synth.text = finalTranscript  = inputValue;
 
     textbox2.onclick = () => {
 
-    initSynth  = new SpeechSynthesisUtterance("この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。");
-resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。";
-     initSynth.lang = "ja-JP";
-     initSynth.rate   = 0.9;       // 速さ
-     initSynth.pitch  = 0.5;       // 高さ
-     initSynth.volume = 0.6;       // 音量
-    speechSynthesis.speak(initSynth);
 
 
-  }
+
+  let     initSynth = new SpeechSynthesisUtterance()
+          // 音量
+
+
+
+
+
+ initSynth.text="この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。";
+ initSynth.lang = "ja-JP";
+ initSynth.rate   = 0.9;       // 速さ
+ initSynth.pitch  = 0.5;       // 高さ
+ initSynth.volume = 0.6;
+   resultDiv.innerHTML   = finalTranscript;
+
+
+   speechSynthesis.speak(initSynth);
+   setTimeout(function(){
+   setInterval(function(){
+    speechSynthesis.cancel(initSynth);
+  },100);
+  },14000);
+
+}
   startBtn.onclick = () => {
+
 
 
     initSynth = new SpeechSynthesisUtterance("ksー９０３チャットボイス、バージョン０が起動されました");
@@ -233,12 +334,9 @@ resultDiv.innerHTML = "この入力画面は聴覚障害者の人が喋れるよ
 
   stopBtn.onclick = () => {
     recognition.stop();
-    synth.text  = finalTranscript;
+  resultDiv.innerHTML =  synth.text  = finalTranscript;
     speechSynthesis.speak(synth);
 
   }
       </script>
 
-
-</body>
-</html>
