@@ -297,13 +297,7 @@ synth.text = finalTranscript  = inputValue;
  initSynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript;
  speechSynthesis.speak(initSynth);
-      setTimeout(function(){
- 
-   
-   setInterval(function(){
-    speechSynthesis.cancel(initSynth);
-  },1);
-  },14000);
+    
 
 }
   startBtn.onclick = () => {
