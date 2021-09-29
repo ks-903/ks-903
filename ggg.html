@@ -25,12 +25,12 @@
           drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
                          {color: '#00FF00', lineWidth: 5});
           drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
-          function module(results.multiHandLandmarks)) {
+          function module(pos) {
             var str = "";                                         // データの文字列を入れる変数
-            for(var i = 0; i < results.multiHandLandmarks).length; i++) {                 // 全ての特徴点（71個）について
+            for(var i = 0; i < pos.length; i++) {                 // 全ての特徴点（71個）について
               str += "特徴点" + i + ": ("
-                   + Math.round(results.multiHandLandmarks)[i][0]) + ", "                 // X座標（四捨五入して整数に）
-                   + Math.round(results.multiHandLandmarks)[i][1]) + ")<br>";             // Y座標（四捨五入して整数に）
+                   + Math.round(pos[i][0]) + ", "                 // X座標（四捨五入して整数に）
+                   + Math.round(pos[i][1]) + ")<br>";             // Y座標（四捨五入して整数に）
             }
             var dat = document.getElementById("dat");             // データ表示用div要素の取得
             dat.innerHTML = str;                                  // データ文字列の表示
@@ -64,7 +64,7 @@
   </head>
 
 <body>
-  <div id="dat"></div>
+  
 
     <video class="input_video" style="position:absolute; display:none;"></video>
     <canvas class="output_canvas" width="200px" height="320px"></canvas>
