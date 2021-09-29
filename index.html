@@ -310,12 +310,12 @@ synth.text = finalTranscript  = inputValue;
 
 
 
-    initSynth = new SpeechSynthesisUtterance("ksー９０３チャットボイス、バージョン０が起動されました");
-   initSynth.lang = "ja-JP";
-   initSynth.rate   = 0.9;       // 速さ
-   initSynth.pitch  = 0.5;       // 高さ
-   initSynth.volume = 0.6;       // 音量
-  speechSynthesis.speak(initSynth);
+    iniSynth = new SpeechSynthesisUtterance("ksー９０３チャットボイス、バージョン０が起動されました");
+   iniSynth.lang = "ja-JP";
+   iniSynth.rate   = 0.9;       // 速さ
+   iniSynth.pitch  = 0.5;       // 高さ
+   iniSynth.volume = 0.6;       // 音量
+  speechSynthesis.speak(iniSynth);
   setTimeout(function(){
     recognition.start();
 
