@@ -84,7 +84,7 @@ synth.rateSetting = 0.4; // 話す速さ 0.1(min) - 10(max), default 1.0
 
 
 
-if ((u == "クリア")||(u=="クリア。 ")) {
+if ((u == "クリア")||(u=="クリア。 ")(u == " クリア ")||(u==" クリア。 ") {
 
   setTimeout(function(){
 location.reload();
@@ -94,7 +94,15 @@ speechSynthesis.speak(synth);
 
 }
 
+if ((u == "ハンドトラッキング")||(u=="ハンドトラッキング。")) {
 
+  synth.text = "申し訳ございません、こちらはまだ、試作中の音声コマンです。";
+  var mp4 = '<iframe src="ggg.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
+
+  content.innerHTML = mp4;
+
+speechSynthesis.speak(synth);
+}
 
 if ((u == "BGM セット")||(u == "BGM セット")||(u == " BGM セット")||(u == " BGM セット")){
   document.getElementById("audioElement2").play();
