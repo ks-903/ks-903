@@ -296,13 +296,13 @@ synth.text = finalTranscript  = inputValue;
  initSynth.pitch  = 0.5;       // 高さ
  initSynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript;
-
-
-   speechSynthesis.speak(initSynth);
-   setTimeout(function(){
-   setTimeout(function(){
+ speechSynthesis.speak(initSynth);
+      setTimeout(function(){
+ 
+   
+   setInterval(function(){
     speechSynthesis.cancel(initSynth);
-  },100);
+  },1);
   },14000);
 
 }
