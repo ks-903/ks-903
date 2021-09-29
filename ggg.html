@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+  <script type="module">
+
+    const videoElement = document.getElementsByClassName('input_video')[0];
+    const canvasElement = document.getElementsByClassName('output_canvas')[0];
+    const canvasCtx = canvasElement.getContext('2d');
+
+
+    function onResults(results) {
+      canvasCtx.save();
+      canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+      canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
+      //console.log(hands);
+      if (results.multiHandLandmarks) {
+        for (const landmarks of results.multiHandLandmarks) {
+
+          drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
+                         {color: '#00FF00', lineWidth: 5});
+          drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+          function module(results.multiHandLandmarks)) {
+            var str = "";                                         // データの文字列を入れる変数
+            for(var i = 0; i < results.multiHandLandmarks).length; i++) {                 // 全ての特徴点（71個）について
+              str += "特徴点" + i + ": ("
+                   + Math.round(results.multiHandLandmarks)[i][0]) + ", "                 // X座標（四捨五入して整数に）
+                   + Math.round(results.multiHandLandmarks)[i][1]) + ")<br>";             // Y座標（四捨五入して整数に）
+            }
+            var dat = document.getElementById("dat");             // データ表示用div要素の取得
+            dat.innerHTML = str;                                  // データ文字列の表示
+          }
+        }
+      }
+      canvasCtx.restore();
+    }
+
+    const hands = new Hands({locateFile: (file) => {
+      return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+    }});
+
+    hands.setOptions({
+      maxNumHands: 2,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5,
+      useCpuInference: true
+    });
+    hands.onResults(onResults);
+    const camera = new Camera(videoElement, {
+      onFrame: async () => {
+        await hands.send({image: videoElement});
+      },
+
+    });
+    camera.start();
+
+</script>
+
+  </head>
+
+<body>
+  <div id="dat"></div>
+
+    <video class="input_video" style="position:absolute; display:none;"></video>
+    <canvas class="output_canvas" width="200px" height="320px"></canvas>
+  </div>
+</body>
+</html>
