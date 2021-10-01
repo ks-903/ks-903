@@ -17,9 +17,9 @@
 
 <p class="tile": center;>voice test</p>
 <form id="form1" action="#">
-   <input type="text" id="input-message" id="btn" >
-   <input type="reset"+"button" onclick="showMessage()"  value="送信">
-
+   <input type="text" id="input-message" id="btn" value="">
+   <!--<input type="reset"+"button" onclick="showMessage()"  value="送信">-->
+  <input type="button" onclick="showMessage()"  value="送信">  
  </form>
  <audio id="audioElement2" loop
  ></audio>
@@ -288,8 +288,7 @@ synth.text = finalTranscript  = inputValue;
       initSynth.pitch  = 0.5;       // 高さ
       initSynth.volume = 0.6;       // 音量
      speechSynthesis.speak(synth);
-
-
+ inputValue.value = '';
 }
 
 
@@ -306,7 +305,29 @@ synth.text = finalTranscript  = inputValue;
  initSynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。"; 
       speechSynthesis.speak(initSynth);
-}
+  let text_form = document.getElementById('input-message');
+
+
+      text_form.addEventListener('keypress', test_ivent);
+
+      function test_ivent(e) {
+        	if (e.keyCode === 13) {
+      		resultDiv.innerHTML  =    "入力された内容は「" + text_form.value+ "」です。";
+          synth.text = finalTranscript  = text_form.value;
+          
+      initSynth.lang = "ja-JP";
+      initSynth.rate   = 0.9;       // 速さ
+      initSynth.pitch  = 0.5;       // 高さ
+      initSynth.volume = 0.6;       // 音量
+     speechSynthesis.speak(synth);
+         text_form.value = '';
+
+
+      	}
+      		return false;
+      }   
+    
+    }
   startBtn.onclick = () => {
 
 
