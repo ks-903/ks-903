@@ -304,7 +304,7 @@ synth.text = finalTranscript  = inputValue;
  initSynth.rate   = 0.9;       // 速さ
  initSynth.pitch  = 0.5;       // 高さ
  initSynth.volume = 0.6;
-   resultDiv.innerHTML   = initSynth.text= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。"= finalTranscript; 
+   resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。"; 
       speechSynthesis.speak(initSynth);
 }
   startBtn.onclick = () => {
