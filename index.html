@@ -299,7 +299,8 @@ synth.text = finalTranscript  = inputValue;
 
 
 
-    initSynth = new SpeechSynthesisUtterance("この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。");
+    initSynth = new SpeechSynthesisUtterance();
+initSynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。";
  initSynth.rate   = 0.9;       // 速さ
  initSynth.pitch  = 0.5;       // 高さ
  initSynth.volume = 0.6;
