@@ -352,11 +352,11 @@ textbox2.addEventListener('keypress', test_ivent);
                  //出力用のp要素にメッセージを表示
                  resultDiv.innerHTML = output;
 
-                initSynth.lang = "ja-JP";
-                 initSynth.rate   = 0.9;       // 速さ
-                   initSynth.pitch  = 0.5;       // 高さ
-                  initSynth.volume = 0.6;       // 音量
-                 speechSynthesis.speak(initSynth);
+                synth.lang = "ja-JP";
+                 synth.rate   = 0.9;       // 速さ
+                   synth.pitch  = 0.5;       // 高さ
+                 synth.volume = 0.6;       // 音量
+                 speechSynthesis.speak(synth);
 
   textbox2.value = "";
 
@@ -367,13 +367,13 @@ textbox2.addEventListener('keypress', test_ivent);
         }
 
 
-    initSynth = new SpeechSynthesisUtterance();
-initSynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら Enterキーを押してください。私があなたの思いを言葉にして伝えます。";
- initSynth.rate   = 0.9;       // 速さ
- initSynth.pitch  = 0.5;       // 高さ
- initSynth.volume = 0.6;
+    initynth = new SpeechSynthesisUtterance();
+initynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら Enterキーを押してください。私があなたの思いを言葉にして伝えます。";
+ initynth.rate   = 0.9;       // 速さ
+ initynth.pitch  = 0.5;       // 高さ
+ initynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたらEnterキーを押してください。私があなたの思いを言葉にして伝えます。"; 
-      speechSynthesis.speak(initSynth);
+      speechSynthesis.speak(initynth);
 
     
 
