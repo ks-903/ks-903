@@ -179,15 +179,15 @@ if ((u == "検索")||(u=="検索。")) {
 
 speechSynthesis.speak(synth);
 
-
-var mp4 = '<iframe src="jjj.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
+recognition.stop();
+  var mp4 = '<iframe src="jjj.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
 
 content.innerHTML = mp4;
 
 }
 
 if ((u == "動画検索")||(u=="動画検索。")) {
-
+recognition.stop();
   synth.text = "フィールドを押して音声入力をすると自動で検索が始まります。";
 
 
