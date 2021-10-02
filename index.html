@@ -345,8 +345,8 @@ textbox2.addEventListener('keypress', test_ivent);
 
               	if (e.keyCode === 13) {
 
-
-               synth.text =    textbox2.value;
+ initynth = new SpeechSynthesisUtterance();
+                  synth.text =    textbox2.value;
 
                const output =    "入力された内容は「" + textbox2.value + "」です。";
                  //出力用のp要素にメッセージを表示
@@ -367,13 +367,13 @@ textbox2.addEventListener('keypress', test_ivent);
         }
 
 
-    initynth = new SpeechSynthesisUtterance();
-initynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら Enterキーを押してください。私があなたの思いを言葉にして伝えます。";
- initynth.rate   = 0.9;       // 速さ
- initynth.pitch  = 0.5;       // 高さ
- initynth.volume = 0.6;
+    nitynth = new SpeechSynthesisUtterance();
+nitynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら Enterキーを押してください。私があなたの思いを言葉にして伝えます。";
+ nitynth.rate   = 0.9;       // 速さ
+ nitynth.pitch  = 0.5;       // 高さ
+ nitynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたらEnterキーを押してください。私があなたの思いを言葉にして伝えます。"; 
-      speechSynthesis.speak(initynth);
+      speechSynthesis.speak(nitynth);
 
     
 
