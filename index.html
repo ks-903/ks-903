@@ -5,7 +5,7 @@
 <title>Web voice</title>
 </head>
 <body bgcolor="skyblue" text="blue" >
-  <audio id="audioElement2" loop src="mark3.mp3"></audio>
+  <audio id="audioElement2"  controls loop src="mark3.mp3"></audio>
 
   <style>
   button {
@@ -18,8 +18,7 @@
 <p class="tile": center;>voice test</p>
 <form id="form1" action="#">
    <input type="text" id="input-message" id="btn" >
-   <input type="reset"+"button" onclick="showMessage()"  value="送信">
-
+<!--<input type="reset"+"button" onclick="showMessage()"  value="送信">エンタキーが使えるため-->
  </form>
  <audio id="audioElement2" loop
  ></audio>
@@ -134,6 +133,7 @@ num = audioArr.length - 1;
 }
 audio.src = audioArr[num];
 audio.play();
+   audio.p
 }
 
 
@@ -275,22 +275,22 @@ setInterval(function(){
 
 
 
-const showMessage = () => {
-      const textbox = document.getElementById("input-message");
-      const inputValue = textbox.value;
-synth.text = finalTranscript  = inputValue;
+//エンタ発動のためconst showMessage = () => {
+  //    const textbox = document.getElementById("input-message");
+  //    const inputValue = textbox.value;
+//synth.text = finalTranscript  = inputValue;
       //テキストボックスの値を使って、出力するメッセージを生成する
-      const output =    "入力された内容は「" + inputValue + "」です。";
+  //    const output =    "入力された内容は「" + inputValue + "」です。";
       //出力用のp要素にメッセージを表示
-      resultDiv.innerHTML = output;
-      initSynth.lang = "ja-JP";
-      initSynth.rate   = 0.9;       // 速さ
-      initSynth.pitch  = 0.5;       // 高さ
-      initSynth.volume = 0.6;       // 音量
-     speechSynthesis.speak(synth);
+    //  resultDiv.innerHTML = output;
+      //initSynth.lang = "ja-JP";
+     // initSynth.rate   = 0.9;       // 速さ
+     // initSynth.pitch  = 0.5;       // 高さ
+     // initSynth.volume = 0.6;       // 音量
+     //speechSynthesis.speak(synth);
 
 
-}
+//}
 
 
 
@@ -330,7 +330,7 @@ synth.text = finalTranscript  = inputValue;
       removeEventListener ('unload', clicker.Finalizer, false);};})();
       document.addEventListener('click', clicker.Listener, false)
        addEventListener ('unload', clicker.Finalizer, false);
-      clicker.add ('input-message', 2, function(){speechSynthesis.cancel();location.reload();alert("2回押されましたのでバグ防止ため、初期状態に戻しします");});      
+      clicker.add ('input-message', 2, function(){speechSynthesis.cancel();location.reload();alert("2回押されましたのでバグ防止のため、初期状態に戻しします");});      
 
 
 textbox2.addEventListener('keypress', test_ivent);
@@ -368,11 +368,11 @@ textbox2.addEventListener('keypress', test_ivent);
 
 
     initSynth = new SpeechSynthesisUtterance();
-initSynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。";
+initSynth.text   = "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら Enterキーを押してください。私があなたの思いを言葉にして伝えます。";
  initSynth.rate   = 0.9;       // 速さ
  initSynth.pitch  = 0.5;       // 高さ
  initSynth.volume = 0.6;
-   resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。"; 
+   resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたらEnterキーを押してください。私があなたの思いを言葉にして伝えます。"; 
       speechSynthesis.speak(initSynth);
 
     
