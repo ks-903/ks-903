@@ -333,6 +333,42 @@ synth.text = finalTranscript  = inputValue;
       clicker.add ('input-message', 2, function(){speechSynthesis.cancel();location.reload();alert("2回押されましたのでバグ防止ため、初期状態に戻しします");});      
 
 
+textbox2.addEventListener('keypress', test_ivent);
+
+  
+
+
+
+
+
+        function test_ivent(e) {
+
+              	if (e.keyCode === 13) {
+
+
+               synth.text =    textbox2.value;
+
+               const output =    "入力された内容は「" + textbox2.value + "」です。";
+                 //出力用のp要素にメッセージを表示
+                 resultDiv.innerHTML = output;
+
+                synth.lang = "ja-JP";
+                synth.rate   = 0.9;       // 速さ
+                  synth.pitch  = 0.5;       // 高さ
+                  synth.volume = 0.6;       // 音量
+                 speechSynthesis.speak(synth);
+
+  textbox2.value = "";
+
+
+
+            	}
+
+
+
+
+
+    
 
 
     initSynth = new SpeechSynthesisUtterance();
