@@ -352,11 +352,11 @@ textbox2.addEventListener('keypress', test_ivent);
                  //出力用のp要素にメッセージを表示
                  resultDiv.innerHTML = output;
 
-                synth.lang = "ja-JP";
-                synth.rate   = 0.9;       // 速さ
-                  synth.pitch  = 0.5;       // 高さ
-                  synth.volume = 0.6;       // 音量
-                 speechSynthesis.speak(synth);
+                initSynth.lang = "ja-JP";
+                 initSynth.rate   = 0.9;       // 速さ
+                   initSynth.pitch  = 0.5;       // 高さ
+                  initSynth.volume = 0.6;       // 音量
+                 speechSynthesis.speak(initSynth);
 
   textbox2.value = "";
 
