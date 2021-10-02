@@ -364,11 +364,7 @@ textbox2.addEventListener('keypress', test_ivent);
 
             	}
 
-
-
-
-
-    
+        }
 
 
     initSynth = new SpeechSynthesisUtterance();
@@ -378,6 +374,9 @@ initSynth.text   = "この入力画面は聴覚障害者の人が喋れるよう
  initSynth.volume = 0.6;
    resultDiv.innerHTML   = finalTranscript= "この入力画面は聴覚障害者の人が喋れるようにアシストするためのツールです、入力をしたら送信をしてください。私があなたの思いを言葉にして伝えます。"; 
       speechSynthesis.speak(initSynth);
+
+    
+
 }
   startBtn.onclick = () => {
 
