@@ -15,7 +15,7 @@
 
 
 
-<p class="tile": center;>voice test</p>
+<p class="title": center;>voice test</p>
 <form id="form1" action="#">
    <input type="text" id="input-message" id="btn" >
 <!--<input type="reset"+"button" onclick="showMessage()"  value="送信">エンタキーが使えるため-->
@@ -30,7 +30,7 @@
 <h1 style="text-align:center" id="content"></h1>
 
 <script>
-  const textbox2 = document.getElementById("input-message");
+  const textbox = document.getElementById("input-message");
   const startBtn = document.querySelector('#start-btn');
   const stopBtn = document.querySelector('#stop-btn');
   const resultDiv = document.querySelector('#result-div');
@@ -347,7 +347,7 @@ textbox2.addEventListener('keypress', test_ivent);
               	if (e.keyCode === 13) {
 
  initynth = new SpeechSynthesisUtterance();
-                  initynth.text =    textbox.value;
+                  initynth.text =    textbox2.value;
 
                const output =    "入力された内容は「" + textbox.value + "」です。";
                  //出力用のp要素にメッセージを表示
@@ -359,7 +359,7 @@ textbox2.addEventListener('keypress', test_ivent);
               initynth.volume = 0.6;       // 音量
                  speechSynthesis.speak(initynth);
 
-  textbox2.value = "";
+  textbox.value = "";
 
 
 
