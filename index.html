@@ -181,10 +181,18 @@ speechSynthesis.speak(synth);
 
 recognition.stop();
   var mp4 = '<iframe src="jjj.html" scrolling = "no"  frameborder="0" width="481" height="300"></iframe>'
+  
 
-content.innerHTML = mp4;
+content.innerHTML =  mp4;
+  setTimeout(function(){
+   
 
-}
+
+  
+  
+  
+mp4.parentNode.removeChild(mp4);  
+},5600);}
 
 if ((u == "動画検索")||(u=="動画検索。")) {
 recognition.stop();
