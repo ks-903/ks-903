@@ -339,7 +339,7 @@ setInterval(function(){
       document.addEventListener('click', clicker.Listener, false)
        addEventListener ('unload', clicker.Finalizer, false);
       clicker.add ('input-message', 2, function(){speechSynthesis.cancel(nitynth);});          
-clicker.add ('input-message', 5,function(){.reload();alert("5回押されましたのでバグ防止のため、初期状態に戻しします");});      
+clicker.add ('input-message', 5,function(){location.reload();alert("5回押されましたのでバグ防止のため、初期状態に戻しします");});      
 
 
 textbox2.addEventListener('keypress', test_ivent);
