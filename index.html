@@ -302,8 +302,10 @@ setInterval(function(){
 
 
 
-    textbox2.onclick = () => {      var clicker = {};
-      clicker.countup = (function () {
+    textbox2.onclick = () => {      
+      var clicker = {};
+      clicker.countup = (
+       function () {
       return function (e) {
       var p = this.get(e);
       if (p) {
